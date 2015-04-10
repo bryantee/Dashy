@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Open Jobs</title>
+	</head>
+
+	<body>
+		<h1> Open Jobs:</h1>
+		{% if open_jobs %}	
+			<ol>
+				{% for job in open_jobs %}
+				<li><h3>{{ job.address }}</h3></li>
+					<ul>
+						<li>Date Due: {{ job.due_date }}</li>
+						<li>Price: ${{ job.price }}</li>
+					</ul>
+					<br>
+				{% endfor %}
+			</ol>
+		{% else %}
+			<strong>There are no open jobs.</strong>
+		{% endif %}
+
+	</body>
+</html>
