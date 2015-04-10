@@ -10,6 +10,13 @@
 				<li><b>Date created: </b>{{ job_date_created }}</li>
 				<li><b>Date due: </b>{{ job_due_date }}</li>
 				<li><b>Price: </b>${{ job_price }}</li>
-
+				<br>
+				<b>Comments:</b>
+				<ul>
+					{% for comment in comments %}
+					<li><i>{{ comment.date }}</i> : {{ comment.text }}</li>
+					<br>
+					{% endfor %}
+				</ul>
 	</body>
 </html>

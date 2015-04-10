@@ -21,6 +21,10 @@ def job_detail(request, job_address_slug):
 		context_dict['job_due_date'] = job.due_date
 		context_dict['job_price'] = job.price
 
+		#expirimental - get comments
+		comment_list = job.comment_set.all()
+		context_dict['comments'] = comment_list
+
 	except Job.DoesNotExist:
 		pass
 
