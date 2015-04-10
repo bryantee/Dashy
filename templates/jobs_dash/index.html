@@ -13,6 +13,7 @@
 					<ul>
 						<li>Date Due: {{ job.due_date }}</li>
 						<li>Price: ${{ job.price }}</li>
+						<li><a href="{{ job.slug }}">Click for more detail</a>
 					</ul>
 					<br>
 				{% endfor %}
