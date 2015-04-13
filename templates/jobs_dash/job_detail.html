@@ -6,6 +6,7 @@
 
 	<body>
 		<h3>Job Detail: </h3> <h1>{{ job_address }}</h1>
+		Days left until due: <strong>{{ dt }}</strong> 
 			<ul>
 				<li><b>Date created: </b>{{ job_date_created }}</li>
 				<li><b>Date due: </b>{{ job_due_date }}</li>
@@ -13,6 +14,7 @@
 				<br>
 				<b>Comments:</b>
 				<ul>
+				<br>
 					{% for comment in comments %}
 					<li><i>{{ comment.date }}</i> : {{ comment.text }}</li>
 					<br>
