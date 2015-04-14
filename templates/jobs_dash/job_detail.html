@@ -8,9 +8,16 @@
 		<h3>Job Detail: </h3> <h1>{{ job_address }}</h1>
 		Days left until due: <strong>{{ dt }}</strong> 
 			<ul>
-				<li><b>Date created: </b>{{ job_date_created }}</li>
+				<li>Days left until due: <strong>{{ dt }}</strong> </li>
 				<li><b>Date due: </b>{{ job_due_date }}</li>
 				<li><b>Price: </b>${{ job_price }}</li>
+				<li><b>Issues: </b>{{ issues_count }}</li>
+				<br>
+				<ul>
+					{% for issue in issues_list %}
+					<li>{{ issue.date}} - {{ issue.text }}</li>
+					{% endfor %}
+				</ul>
 				<br>
 				<b>Comments:</b>
 				<ul>

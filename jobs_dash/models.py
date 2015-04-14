@@ -24,3 +24,11 @@ class Comment(models.Model):
 
 	def __unicode__(self):
 		return str(self.date)
+
+class Issue(models.Model):
+	job = models.ForeignKey(Job)
+	date = models.DateTimeField(auto_now_add=True)
+	text = models.CharField(max_length=128)
+
+	def __unicode__(self):
+		return str(self.date)
