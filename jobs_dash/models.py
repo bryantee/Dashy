@@ -30,5 +30,9 @@ class Issue(models.Model):
 	date = models.DateTimeField(auto_now_add=True)
 	text = models.CharField(max_length=128)
 
+	# Used to distinguish between issues that have been solved
+	# True means the issue is still open and needs attention
+	is_open = models.BooleanField(default=True)
+
 	def __unicode__(self):
 		return str(self.date)

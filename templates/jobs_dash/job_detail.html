@@ -15,7 +15,7 @@
 				<br>
 				<ul>
 					{% for issue in issues_list %}
-					<li>{{ issue.date}} - {{ issue.text }}</li>
+					<li>{{ issue.date}} - {{ issue.text }} - <b><i>{{ issue.is_open }}</i></b></li>
 					{% endfor %}
 				</ul>
 				<br>
