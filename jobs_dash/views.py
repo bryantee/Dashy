@@ -33,8 +33,12 @@ def job_detail(request, job_address_slug):
 	# Future plans for link to more details on issues and past issues
 	issues_list = job.issue_set.all()
 	issues_count = len(issues_list)
+	issues_list_open = [i for i in issues_list if i.is_open]
+	open_issues_count = len(issues_list_open)
 	context_dict['issues_count'] = issues_count
 	context_dict['issues_list'] = issues_list
+	context_dict['open_issues_count'] = open_issues_count
+
 
 	# Calculates days left until project due	
 	today = datetime.today().date()

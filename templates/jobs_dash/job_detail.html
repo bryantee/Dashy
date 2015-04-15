@@ -7,10 +7,10 @@
 	<body>
 		<h3>Job Detail: </h3> <h1>{{ job_address }}</h1> 
 			<ul>
-				<li>Days left until due: <strong>{{ dt }}</strong> </li>
+				<li><b>Days left until due: </b> {{ dt }} </li>
 				<li><b>Date due: </b>{{ job_due_date }}</li>
 				<li><b>Price: </b>${{ job_price }}</li>
-				<li><b>Issues: </b>{{ issues_count }}</li>
+				<li><b># of Open Issues: </b>{{ open_issues_count }}</li>
 				<br>
 				<ul>
 					{% for issue in issues_list %}
