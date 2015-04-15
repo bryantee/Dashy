@@ -24,3 +24,15 @@ class Comment(models.Model):
 
 	def __unicode__(self):
 		return str(self.date)
+
+class Issue(models.Model):
+	job = models.ForeignKey(Job)
+	date = models.DateTimeField(auto_now_add=True)
+	text = models.CharField(max_length=128)
+
+	# Used to distinguish between issues that have been solved
+	# True means the issue is still open and needs attention
+	is_open = models.BooleanField(default=True)
+
+	def __unicode__(self):
+		return str(self.date)
