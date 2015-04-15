@@ -5,8 +5,7 @@
 	</head>
 
 	<body>
-		<h3>Job Detail: </h3> <h1>{{ job_address }}</h1>
-		Days left until due: <strong>{{ dt }}</strong> 
+		<h3>Job Detail: </h3> <h1>{{ job_address }}</h1> 
 			<ul>
 				<li>Days left until due: <strong>{{ dt }}</strong> </li>
 				<li><b>Date due: </b>{{ job_due_date }}</li>
@@ -15,7 +14,7 @@
 				<br>
 				<ul>
 					{% for issue in issues_list %}
-					<li>{{ issue.date}} - {{ issue.text }} - <b><i>{{ issue.is_open }}</i></b></li>
+					<li>{{ issue.date}} - {{ issue.text }} - <b><i>{% if issue.is_open %}OPEN{% else %}CLOSED{% endif %}</i></b></li>
 					{% endfor %}
 				</ul>
 				<br>
