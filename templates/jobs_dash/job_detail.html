@@ -15,7 +15,7 @@
 				<br>
 				<ul>
 					{% for issue in issues_list %}
-					<li>{{ issue.date}} - {{ issue.text }} - <b><i>{% if issue.is_open %}OPEN{% else %}CLOSED{% endif %}</i></b></li>
+					<li>{{ issue.date}} : {{ issue.text }} - <b><i>[{% if issue.is_open %}OPEN{% else %}CLOSED{% endif %}]</i></b></li>
 					{% endfor %}
 				</ul>
 				<br>
@@ -26,6 +26,12 @@
 					<li><i>{{ comment.date }}</i> : {{ comment.text }}</li>
 					<br>
 					{% endfor %}
+					<li>
+						<form id="comment_form" method="POST" action="/jobs/{{ slug }}/" />
+							{% csrf_token %}
+							{{ form }}
+						<input type="submit" name="submit" value="Add Comment" />
+						</form>
 				</ul>
 	</body>
 </html>

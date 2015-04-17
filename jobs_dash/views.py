@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from jobs_dash.models import Job
 from datetime import datetime
+from jobs_dash.forms import CommentForm
+from django.http import HttpResponseRedirect
 
 def index(request):
 	jobs_list = Job.objects.order_by('due_date')
@@ -44,5 +46,21 @@ def job_detail(request, job_address_slug):
 	today = datetime.today().date()
 	dt = job.due_date - today
 	context_dict['dt'] = dt
+
+	if request.method == 'POST':
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			form.save(commit=True)
+			return HttpResponseRedirect('/jobs/%s/' % job_address_slug)
+		else:
+			print form.errors
+	else:
+		form = CommentForm({'job': job.id})
+
+	context_dict['form'] = form
+	context_dict['slug'] = job_address_slug
+
+	# Testing for initial
+	print form['job'].value()
 
 	return render(request, 'jobs_dash/job_detail.html', context_dict)
