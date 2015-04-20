@@ -7,7 +7,8 @@ from django.http import HttpResponseRedirect
 
 def index(request):
 	jobs_list = Job.objects.order_by('due_date')
-	context_dict = {'open_jobs': jobs_list}
+	jobs_open_list = [j for j in jobs_list if j.is_open]
+	context_dict = {'open_jobs': jobs_open_list}
 
 	return render(request, 'jobs_dash/index.html', context_dict)
 
