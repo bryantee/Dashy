@@ -23,7 +23,7 @@ class Comment(models.Model):
 	text = models.TextField(blank=False)
 
 	def __unicode__(self):
-		return str(self.date)
+		return str(self.job) + ' - ' + str(self.date)
 
 class Issue(models.Model):
 	job = models.ForeignKey(Job)
