@@ -11,6 +11,7 @@
 				<li><b>Days left until due: </b> {{ dt }} </li>
 				<li><b>Date due: </b>{{ job_due_date }}</li>
 				<li><b>Price: </b>${{ job_price }}</li>
+				<li><b>Status: </b><i>[{% if job_status %}OPEN{% else %}CLOSED{% endif %}]</i></li>
 				<li><b># of Open Issues: </b>{{ open_issues_count }}</li>
 				<br>
 				<ul>

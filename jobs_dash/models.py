@@ -8,7 +8,7 @@ class Job(models.Model):
 	time_created = models.TimeField(auto_now_add=True)
 	price = models.DecimalField(max_digits=6, decimal_places=2)
 	slug = models.SlugField(unique=True)
-	#status = models.BooleanField()
+	is_open = models.BooleanField(default=True)
 	
 	def save(self, *args, **kwargs):
                 self.slug = slugify(self.address)

@@ -26,6 +26,7 @@ def job_detail(request, job_address_slug):
 	context_dict['job_date_created'] = job.date_created
 	context_dict['job_due_date'] = job.due_date
 	context_dict['job_price'] = job.price
+	context_dict['job_status'] = job.is_open
 
 	#expirimental - get comments
 	comment_list = job.comment_set.all().order_by('date')
