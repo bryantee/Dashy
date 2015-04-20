@@ -35,4 +35,4 @@ class Issue(models.Model):
 	is_open = models.BooleanField(default=True)
 
 	def __unicode__(self):
-		return str(self.date)
+		return  str(self.job) + ' - ' + str(self.date)
