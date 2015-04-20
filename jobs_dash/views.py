@@ -55,7 +55,7 @@ def job_detail(request, job_address_slug):
 		else:
 			print form.errors
 	else:
-		form = CommentForm({'job': job.id})
+		form = CommentForm(initial={'job': job.id})
 
 	context_dict['form'] = form
 	context_dict['slug'] = job_address_slug

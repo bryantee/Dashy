@@ -29,7 +29,14 @@
 					<li>
 						<form id="comment_form" method="POST" action="/jobs/{{ slug }}/" />
 							{% csrf_token %}
-							{{ form }}
+							<!-- {{ form }} -->
+							{% for field in form %}
+								{% if field.name != 'text' and field.name != 'job' %}
+									{{ field.label}}
+								{% endif %}
+								{{ field }}
+							{% endfor %}
+							<br>
 						<input type="submit" name="submit" value="Add Comment" />
 						</form>
 				</ul>
