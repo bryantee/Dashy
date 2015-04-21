@@ -5,7 +5,7 @@
 	</head>
 
 	<body>
-		<b><a href="/admin">Admin Panel</a></b>
+		<b><a href="/admin">Admin Panel</a> | <a href="/jobs/add_job">Add Job</a></b>
 		<h1> Open Jobs:</h1>
 		{% if open_jobs %}	
 			<ol>
@@ -14,7 +14,7 @@
 					<ul>
 						<li>Date Due: {{ job.due_date }}</li>
 						<li>Price: ${{ job.price }}</li>
-						<li><a href="{{ job.slug }}">Click for more detail</a>
+						<li><a href="{{ job.slug }}">Details</a>
 					</ul>
 					<br>
 				{% endfor %}

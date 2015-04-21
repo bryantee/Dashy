@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from jobs_dash.models import Job
 from datetime import datetime
-from jobs_dash.forms import CommentForm
+from jobs_dash.forms import CommentForm, JobForm
 from django.http import HttpResponseRedirect
 
 def index(request):
@@ -66,3 +66,17 @@ def job_detail(request, job_address_slug):
 	print form['job'].value()
 
 	return render(request, 'jobs_dash/job_detail.html', context_dict)
+
+def add_job(request):
+
+	if request.method == 'POST':
+		form = JobForm(request.POST)
+		if form.is_valid():
+			form.save(commit=True)
+			return index(request)
+		else:
+			print form.errors
+	else:
+		form = JobForm()
+
+	return render(request, 'jobs_dash/add_job.html', {'form': form})

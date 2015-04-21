@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Add a job here</title>
+	</head>
+
+	<body>
+		<h1>Add a job here</h1>
+
+		<form id="add_job" method="POST" action="/jobs/add_job/">
+			{% csrf_token %}
+			{{ form }}
+
+			<input type="submit" name="submit" value="Add Job" />
+		</form>
+	</body>
+</html>
