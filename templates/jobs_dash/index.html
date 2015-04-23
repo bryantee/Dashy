@@ -2,10 +2,13 @@
 <html>
 	<head>
 		<title>Open Jobs</title>
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
 	</head>
 
 	<body>
 		<b><a href="/admin">Admin Panel</a> | <a href="/jobs/add_job">Add Job</a></b>
+		<div class='container'>
 		<h1> Open Jobs:</h1>
 		{% if open_jobs %}	
 			<ol>
@@ -14,14 +17,19 @@
 					<ul>
 						<li>Date Due: {{ job.due_date }}</li>
 						<li>Price: ${{ job.price }}</li>
-						<li><a href="{{ job.slug }}">Details</a>
-					</ul>
-					<br>
+						<li><a class="btn btn-info" href="{{ job.slug }}">Details</a></li>
+					</ul
+>					<br>
 				{% endfor %}
 			</ol>
 		{% else %}
 			<strong>There are no open jobs.</strong>
 		{% endif %}
+		</div>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>

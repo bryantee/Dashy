@@ -2,32 +2,35 @@
 <html>
 	<head>
 		<title>Job Detail - {{ job_address }}</title>
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
 	</head>
 
 	<body>
 		 <b><a href="/jobs">Back to Dashboard</a> | <a href="/admin">Admin</a></b>
-		 <h1>{{ job_address }}</h1> 
-			<ul>
-				<li><b>Days left until due: </b> {{ dt }} </li>
-				<li><b>Date due: </b>{{ job_due_date }}</li>
-				<li><b>Price: </b>${{ job_price }}</li>
-				<li><b>Status: </b><i>[{% if job_status %}OPEN{% else %}CLOSED{% endif %}]</i></li>
-				<li><b># of Open Issues: </b>{{ open_issues_count }}</li>
-				<br>
+		 <div class='container'>
+			 <h1>{{ job_address }}</h1> 
 				<ul>
-					{% for issue in issues_list %}
-					<li>{{ issue.date}} : {{ issue.text }} - <b><i>[{% if issue.is_open %}OPEN{% else %}CLOSED{% endif %}]</i></b></li>
-					{% endfor %}
-				</ul>
-				<br>
-				<b>Comments:</b>
-				<ul>
-				<br>
-					{% for comment in comments %}
-					<li><i>{{ comment.date }}</i> : {{ comment.text }}</li>
+					<li><b>Days left until due: </b> {{ dt }} </li>
+					<li><b>Date due: </b>{{ job_due_date }}</li>
+					<li><b>Price: </b>${{ job_price }}</li>
+					<li><b>Status: </b><i>[{% if job_status %}OPEN{% else %}CLOSED{% endif %}]</i></li>
+					<li><b># of Open Issues: </b>{{ open_issues_count }}</li>
 					<br>
-					{% endfor %}
-					<li>
+					<ul>
+						{% for issue in issues_list %}
+						<li>{{ issue.date}} : {{ issue.text }} - <b><i>[{% if issue.is_open %}OPEN{% else %}CLOSED{% endif %}]</i></b></li>
+						{% endfor %}
+					</ul>
+					<br>
+					<b>Comments:</b>
+					<ul>
+					<br>
+						{% for comment in comments %}
+						<li><i>{{ comment.date }}</i> : {{ comment.text }}</li>
+						<br>
+						{% endfor %}
+					</ul>
 						<form id="comment_form" method="POST" action="/jobs/{{ slug }}/" />
 							{% csrf_token %}
 							<!-- {{ form }} -->
@@ -40,6 +43,12 @@
 							<br>
 						<input type="submit" name="submit" value="Add Comment" />
 						</form>
-				</ul>
+
+					</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>
