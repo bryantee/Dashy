@@ -73,7 +73,7 @@ def add_job(request):
 		form = JobForm(request.POST)
 		if form.is_valid():
 			form.save(commit=True)
-			return index(request)
+			return HttpResponseRedirect('/jobs/')
 		else:
 			print form.errors
 	else:
