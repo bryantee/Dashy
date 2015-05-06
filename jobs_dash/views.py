@@ -5,6 +5,7 @@ from datetime import datetime
 from jobs_dash.forms import CommentForm, JobForm
 from django.http import HttpResponseRedirect
 
+
 def index(request):
 	jobs_list = Job.objects.order_by('due_date')
 	jobs_open_list = [j for j in jobs_list if j.is_open]
@@ -61,9 +62,20 @@ def job_detail(request, job_address_slug):
 
 	context_dict['form'] = form
 	context_dict['slug'] = job_address_slug
+	context_dict['job'] = job
+
+######################
+### Testing below ####
+######################
 
 	# Testing for initial
 	print form['job'].value()
+	# Testing for img url
+	print(job.pic.url)
+
+######################
+### End Test #########
+######################
 
 	return render(request, 'jobs_dash/job_detail.html', context_dict)
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Job Detail - {{ job_address }}</title>
 		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
@@ -18,6 +19,9 @@
 
 		 
 		 <div class='container'>
+		 	{% block image %}
+		 	<img src="{{ job.pic.url }}" height="200" width="250" border="1" / >
+		 	{% endblock %}
 			 <h1>{{ job_address }}</h1> 
 				<ul>
 					<li><b>Days left until due: </b> {{ dt }} </li>
