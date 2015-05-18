@@ -1,0 +1,15 @@
+.job-log {
+	margin-top: 3em;
+	padding: 3em;
+}
+
+.comment {
+	padding: 1em;
+	background-color: whitesmoke;
+	border: 1px solid grey;
+}
+
+.time-stamp {
+	font-weight: 400;
+	font-size: 12px;
+}
