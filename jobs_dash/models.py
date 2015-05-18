@@ -7,7 +7,7 @@ class Job(models.Model):
 	due_date = models.DateField()
 	date_created = models.DateField(auto_now_add=True)
 	time_created = models.TimeField(auto_now_add=True)
-	price = models.DecimalField(max_digits=6, decimal_places=2)
+	price = models.DecimalField(max_digits=8, decimal_places=2)
 	pic = models.ImageField("House Pic", upload_to="images/", blank=True, null=True)
 	slug = models.SlugField(unique=True)
 	is_open = models.BooleanField(default=True)
