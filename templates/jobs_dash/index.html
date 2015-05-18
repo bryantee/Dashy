@@ -6,6 +6,7 @@
 		<title>Open Jobs</title>
 		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    	<link href="../media/jobs/css/index-main.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -17,21 +18,21 @@
 			</ul>
   			</div>
 		</nav>
-		<div class='container'>
+		<div class='container main-content'>
 		<!-- <h1> Open Jobs:</h1> -->
 		{% if open_jobs %}	
-			<ol>
 				{% for job in open_jobs %}
-				<li><h3>{{ job.address }}</h3></li>
-					<ul>
-						<li>Date Due: {{ job.due_date }}</li>
-						<li>Price: ${{ job.price }}</li>
-						<li><a class="btn btn-info" href="{{ job.slug }}">Details</a></li>
-					</ul
->					<br>
+				<div class="row">
+					<div class="col-lg-3 job">
+					<h3>{{ job.address }}</h3>
+						<p>Date Due: {{ job.due_date }}</p>
+						<p>Price: ${{ job.price }}</p>
+						<p><a class="btn btn-info" href="{{ job.slug }}">Details</a></p>
+					</div>
 				{% endfor %}
-			</ol>
-		{% else %}
+		
+					</div>
+			{% else %}
 			<strong>There are no open jobs.</strong>
 		{% endif %}
 		</div>
