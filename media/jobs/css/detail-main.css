@@ -7,13 +7,12 @@
 }
 
 .second-row {
-	margin-top: 3em;
-	margin-top: 2em;
+	margin: 05em 0;
 }
 
 .comment {
 	padding: 1em;
-	margin-top: .5em;
+	margin: 0.5em;
 	background-color: whitesmoke;}
 
 .time-stamp {
@@ -23,9 +22,14 @@
 }
 
 .comment-box {
-	margin-top: 5em;
+	margin: 5em 0;
+
 }
 
 .comment-box .btn {
 	margin: 1em;
+}
+
+.header {
+	font-size: 1.7em;
 }
