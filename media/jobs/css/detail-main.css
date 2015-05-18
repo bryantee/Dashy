@@ -1,15 +1,31 @@
-.job-log {
+.top-row {
 	margin-top: 3em;
-	padding: 3em;
+}
+
+.job-image {
+	text-align: center;
+}
+
+.second-row {
+	margin-top: 3em;
+	margin-top: 2em;
 }
 
 .comment {
 	padding: 1em;
-	background-color: whitesmoke;
-	border: 1px solid grey;
-}
+	margin-top: .5em;
+	background-color: whitesmoke;}
 
 .time-stamp {
-	font-weight: 400;
+	font-weight: bolder;
 	font-size: 12px;
+	padding-bottom: .5em
+}
+
+.comment-box {
+	margin-top: 5em;
+}
+
+.comment-box .btn {
+	margin: 1em;
 }
