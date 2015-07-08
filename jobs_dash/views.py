@@ -11,6 +11,13 @@ def index(request):
 	jobs_open_list = [j for j in jobs_list if j.is_open]
 	context_dict = {'open_jobs': jobs_open_list}
 
+	# get total open invoicables
+	total_open_money = 0
+	for j in jobs_open_list:
+		total_open_money += j.price
+	context_dict['open_money'] = total_open_money
+
+
 	return render(request, 'jobs_dash/index.html', context_dict)
 
 def job_detail(request, job_address_slug):

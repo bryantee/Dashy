@@ -16,6 +16,7 @@
  				<li><a href="/admin">Admin</a></li>
  				<li><a href="/jobs/add_job">Add Job</a></li>
 			</ul>
+			<div class="open-invoice">Open Jobs: $ {% load humanize %}{{ open_money|intcomma }}</div>
   			</div>
 		</nav>
 		<div class='container main-content'>
@@ -26,7 +27,7 @@
 					<div class="col-lg-3 job">
 					<h3>{{ job.address }}</h3>
 						<p>Date Due: {{ job.due_date }}</p>
-						<p>Price: ${{ job.price }}</p>
+						<p>Price: ${{ job.price|intcomma }}</p>
 						<p><a class="btn btn-info" href="{{ job.slug }}">Details</a></p>
 					</div>
 				{% endfor %}
