@@ -11,6 +11,7 @@ class Job(models.Model):
 	pic = models.ImageField("House Pic", upload_to="images/", blank=True, null=True)
 	slug = models.SlugField(unique=True)
 	is_open = models.BooleanField(default=True)
+	is_invoiced = models.BooleanField(default=False)
 	
 	def save(self, *args, **kwargs):
                 self.slug = slugify(self.address)

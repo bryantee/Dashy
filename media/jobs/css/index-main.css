@@ -7,9 +7,18 @@
 }
 
 .open-invoice {
-  float: right;
-  margin-top: 10px;
-  font-weight: 700;
-  font-size: 1.2em;
-  color: green;
+	float: right;
+	margin-top: 10px;
+	margin-left: 15px;
+	font-weight: 700;
+	font-size: 1.2em;
+}
+
+.invoice-numbers {
+	color: green;
+}
+
+.invoiced {
+	font-weight: 700;
+	color: green;
 }

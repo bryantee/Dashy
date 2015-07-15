@@ -13,9 +13,19 @@ def index(request):
 
 	# get total open invoicables
 	total_open_money = 0
+	open_jobs_not_invoiced = [j for j in jobs_open_list if j.is_invoiced == False]
 	for j in jobs_open_list:
 		total_open_money += j.price
 	context_dict['open_money'] = total_open_money
+
+	# get total open jobs that have been invoiced
+	total_invoiced = 0
+	invoiced_last_10 = [j for j in jobs_list if j.is_open and j.is_invoiced]
+	print invoiced_last_10
+	for j in invoiced_last_10:
+		total_invoiced += j.price
+	context_dict['invoiced'] = total_invoiced
+
 
 
 	return render(request, 'jobs_dash/index.html', context_dict)
