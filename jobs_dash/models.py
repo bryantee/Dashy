@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from PIL import Image
+from datetime import datetime
 
 class Job(models.Model):
 	address = models.CharField(max_length=128, unique=True)
@@ -12,10 +13,18 @@ class Job(models.Model):
 	slug = models.SlugField(unique=True)
 	is_open = models.BooleanField(default=True)
 	is_invoiced = models.BooleanField(default=False)
+	invoiced_date = models.DateField(blank=True, null=True)
 	
 	def save(self, *args, **kwargs):
-                self.slug = slugify(self.address)
-                super(Job, self).save(*args, **kwargs)
+		self.slug = slugify(self.address)
+		super(Job, self).save(*args, **kwargs)
+
+	def invoice(self):
+		self.invoiced_date = datetime.now
+		self.is_invoiced = True
+		self.is_open = False
+		print("Invoiced!")
+
 
 	def __unicode__(self):
 		return self.address	

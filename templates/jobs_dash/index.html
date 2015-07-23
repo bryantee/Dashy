@@ -23,6 +23,16 @@
 		<div class='container main-content'>
 		<!-- <h1> Open Jobs:</h1> -->
 		<div class="row">
+		{% if invoiced_jobs %}
+			{% for job in invoiced_jobs %}
+				<div class="col-lg-3 col-md-4 job invoiced">
+					<h3>{{ job.address }}</h3>
+						<p>Date Due: {{ job.due_date }}</p>
+						<p>Price:${{ job.price|intcomma }}</p>
+						<p><a class="btn btn-success" href="{{ job.slug }}">Details</a></p>
+				</div>
+			{% endfor %}
+		{% endif %}
 		{% if open_jobs %}	
 				{% for job in open_jobs %}
 					<div class="col-lg-3 col-md-4 job">
@@ -31,7 +41,7 @@
 						<p>Price:{% if job.is_invoiced == True %}
 							<span class="invoiced">${{ job.price|intcomma }}</span>
 						{% else %}<span>${{ job.price|intcomma }}</span>
-							<span 
+							<span> 
 						{% endif %}
 						</p>
 						<p><a class="btn btn-info" href="{{ job.slug }}">Details</a></p>

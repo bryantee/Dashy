@@ -11,22 +11,33 @@ def index(request):
 	jobs_open_list = [j for j in jobs_list if j.is_open]
 	context_dict = {'open_jobs': jobs_open_list}
 
+	def was_invoiced_10_days_ago(job):
+		if job.invoiced_date:
+			today = datetime.today().date()
+			dt = today - job.invoiced_date
+			print(dt.total_seconds())
+			if dt.total_seconds() <= 864000:
+				return True
+			else:
+				return False
+
 	# get total open invoicables
 	total_open_money = 0
-	open_jobs_not_invoiced = [j for j in jobs_open_list if j.is_invoiced == False]
 	for j in jobs_open_list:
-		total_open_money += j.price
+		if j.is_invoiced == False:
+			total_open_money += j.price
 	context_dict['open_money'] = total_open_money
 
-	# get total open jobs that have been invoiced
+	# get total jobs that have been invoiced
 	total_invoiced = 0
-	invoiced_last_10 = [j for j in jobs_list if j.is_open and j.is_invoiced]
+	invoiced_jobs = [j for j in jobs_list if j.is_invoiced]
+	invoiced_last_10 = [j for j in invoiced_jobs if was_invoiced_10_days_ago(j)]
+
 	print invoiced_last_10
 	for j in invoiced_last_10:
-		total_invoiced += j.price
+			total_invoiced += j.price
 	context_dict['invoiced'] = total_invoiced
-
-
+	context_dict['invoiced_jobs'] = invoiced_last_10
 
 	return render(request, 'jobs_dash/index.html', context_dict)
 
