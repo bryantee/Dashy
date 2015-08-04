@@ -12,5 +12,5 @@ class CommentForm(forms.ModelForm):
 class JobForm(forms.ModelForm):
 	class Meta:
 		model = Job
-		fields = ('address', 'due_date', 'price')
+		fields = ('address', 'due_date', 'price', 'pic')
 		widgets = {'due_date': SelectDateWidget}
