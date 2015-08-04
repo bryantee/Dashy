@@ -25,7 +25,6 @@ class Job(models.Model):
 		self.is_open = False
 		print("Invoiced!")
 
-
 	def __unicode__(self):
 		return self.address	
 
