@@ -1,0 +1,24 @@
+.job {
+	padding: 1em;
+	margin: 1em;
+	border: solid 1px lightgrey;
+	text-align: center;
+	box-shadow: 10px 10px 10px #8d8d8d;
+}
+
+.open-invoice {
+	float: right;
+	margin-top: 10px;
+	margin-left: 15px;
+	font-weight: 700;
+	font-size: 1.2em;
+}
+
+.invoice-numbers {
+	color: green;
+}
+
+.invoiced {
+	font-weight: 700;
+	color: green;
+}

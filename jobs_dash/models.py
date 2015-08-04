@@ -1,18 +1,29 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from PIL import Image
+from datetime import datetime
 
 class Job(models.Model):
 	address = models.CharField(max_length=128, unique=True)
 	due_date = models.DateField()
 	date_created = models.DateField(auto_now_add=True)
 	time_created = models.TimeField(auto_now_add=True)
-	price = models.DecimalField(max_digits=6, decimal_places=2)
+	price = models.DecimalField(max_digits=8, decimal_places=2)
+	pic = models.ImageField("House Pic", upload_to="images/", blank=True, null=True)
 	slug = models.SlugField(unique=True)
-	#status = models.BooleanField()
+	is_open = models.BooleanField(default=True)
+	is_invoiced = models.BooleanField(default=False)
+	invoiced_date = models.DateField(blank=True, null=True)
 	
 	def save(self, *args, **kwargs):
-                self.slug = slugify(self.address)
-                super(Job, self).save(*args, **kwargs)
+		self.slug = slugify(self.address)
+		super(Job, self).save(*args, **kwargs)
+
+	def invoice(self):
+		self.invoiced_date = datetime.now
+		self.is_invoiced = True
+		self.is_open = False
+		print("Invoiced!")
 
 	def __unicode__(self):
 		return self.address	
@@ -23,7 +34,7 @@ class Comment(models.Model):
 	text = models.TextField(blank=False)
 
 	def __unicode__(self):
-		return str(self.date)
+		return str(self.job) + ' - ' + str(self.date)
 
 class Issue(models.Model):
 	job = models.ForeignKey(Job)
@@ -35,4 +46,4 @@ class Issue(models.Model):
 	is_open = models.BooleanField(default=True)
 
 	def __unicode__(self):
-		return str(self.date)
+		return  str(self.job) + ' - ' + str(self.date)

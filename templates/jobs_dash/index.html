@@ -1,26 +1,62 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 		<title>Open Jobs</title>
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    	<link href="../media/jobs/css/index-main.css" rel="stylesheet">
 	</head>
 
 	<body>
-		<h1> Open Jobs:</h1>
+		<nav class="navbar navbar-default navbar-fixed-top">
+ 			<div class="container">
+ 			<ul class="nav navbar-nav">
+ 				<li><a href="/admin">Admin</a></li>
+ 				<li><a href="/jobs/add_job">Add Job</a></li>
+			</ul>
+			<div class="open-invoice">Open Jobs: <span class="invoice-numbers">$ {% load humanize %}{{ open_money|intcomma }}</span></div>
+			<div class="open-invoice">Invoiced last 10d: <span class="invoice-numbers">$ {{ invoiced|intcomma }}</span></div>
+  			</div>
+		</nav>
+		<div class='container main-content'>
+		<!-- <h1> Open Jobs:</h1> -->
+		<div class="row">
+		{% if invoiced_jobs %}
+			{% for job in invoiced_jobs %}
+				<div class="col-lg-3 col-md-4 job invoiced">
+					<h3>{{ job.address }}</h3>
+						<p>Date Due: {{ job.due_date }}</p>
+						<p>Price: ${{ job.price|intcomma }}</p>
+						<p><a class="btn btn-success" href="{{ job.slug }}">Details</a></p>
+				</div>
+			{% endfor %}
+		{% endif %}
 		{% if open_jobs %}	
-			<ol>
 				{% for job in open_jobs %}
-				<li><h3>{{ job.address }}</h3></li>
-					<ul>
-						<li>Date Due: {{ job.due_date }}</li>
-						<li>Price: ${{ job.price }}</li>
-						<li><a href="{{ job.slug }}">Click for more detail</a>
-					</ul>
-					<br>
+					<div class="col-lg-3 col-md-4 job">
+					<h3> {% if job.is_invoiced == True %} <span class="invoiced"> {{ job.address }}</span> {% else %} {{ job.address }} {% endif %} </h3>
+						<p>Date Due: {{ job.due_date }}</p>
+						<p>Price:{% if job.is_invoiced == True %}
+							<span class="invoiced"> ${{ job.price|intcomma }}</span>
+						{% else %}<span> ${{ job.price|intcomma }}</span>
+							<span> 
+						{% endif %}
+						</p>
+						<p><a class="btn btn-info" href="{{ job.slug }}">Details</a></p>
+					</div>
 				{% endfor %}
-			</ol>
-		{% else %}
+		
+			</div>
+			{% else %}
 			<strong>There are no open jobs.</strong>
 		{% endif %}
+		</div>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>

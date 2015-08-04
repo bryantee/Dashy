@@ -1,30 +1,80 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Job Detail - {{ job_address }}</title>
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    	<link href="../../media/jobs/css/detail-main.css" rel="stylesheet">
 	</head>
 
 	<body>
-		<h3>Job Detail: </h3> <h1>{{ job_address }}</h1> 
-			<ul>
-				<li><b>Days left until due: </b> {{ dt }} </li>
-				<li><b>Date due: </b>{{ job_due_date }}</li>
-				<li><b>Price: </b>${{ job_price }}</li>
-				<li><b># of Open Issues: </b>{{ open_issues_count }}</li>
-				<br>
-				<ul>
-					{% for issue in issues_list %}
-					<li>{{ issue.date}} - {{ issue.text }} - <b><i>{% if issue.is_open %}OPEN{% else %}CLOSED{% endif %}</i></b></li>
-					{% endfor %}
-				</ul>
-				<br>
-				<b>Comments:</b>
-				<ul>
-				<br>
+		<nav class="navbar navbar-default navbar-fixed-top">
+ 			<div class="container">
+ 			<ul class="nav navbar-nav">
+ 				<li><a href="/jobs">Back to Dashboard</a></li>
+ 				<li><a href="/admin">Admin</a></li>
+			</ul>
+  			</div>
+		</nav>
+
+		 
+		 <div class='container'>
+		 	<div class="row top-row">
+		 	<div class="col-md-6 job-image">
+		 	{% block image %}
+		 	<img class="img-rounded" src="{{ job.pic.url }}" height="300" width="375" border="1" / >
+		 	{% endblock %}
+		 	</div>
+		 	<div class="col-md-6 job-main-info">
+			 <h1>{{ job_address }}</h1> 
+					<p><b>Days left until due: </b> {{ dt }}</p>
+					<p><b>Date due: </b>{{ job_due_date }}</p>
+					<p><b>Price: </b>${{ job_price }}</p>
+					<p><b>Status: </b><i>[{% if job_status %}OPEN{% else %}CLOSED{% endif %}]</i></p>
+					<p><b># of Open Issues: </b>{{ open_issues_count }}
+					<ul>
+						{% for issue in issues_list %}
+						<li>{{ issue.date}} : {{ issue.text }} - <b><i>[{% if issue.is_open %}OPEN{% else %}CLOSED{% endif %}]</i></b></li>
+						{% endfor %}
+					</ul></p>
+			</div> 
+			</div>
+			<div class="container">
+			<div class="row second-row">
+			<div class="col-md-6 job-log">
+				<b class="header">Log</b>
+				<div class="comments">
 					{% for comment in comments %}
-					<li><i>{{ comment.date }}</i> : {{ comment.text }}</li>
-					<br>
+					<div class="comment">
+						<div class="time-stamp">{{ comment.date }}</div>
+						<div class="comment-text">{{ comment.text }}</div>
+					</div>
 					{% endfor %}
-				</ul>
+				</div>
+			</div>
+				<div class="col-md-6 comment-box">
+					<form id="comment_form" method="POST" action="/jobs/{{ slug }}/" />
+						{% csrf_token %}
+						<!-- {{ form }} -->
+						{% for field in form %}
+							{% if field.name != 'text' and field.name != 'job' %}
+								{{ field.label}}
+							{% endif %}
+							{{ field }}
+						{% endfor %}
+						<br>
+					<input class="btn btn-primary" type="submit" name="submit" value="Add Comment" />
+					</form>
+				</div>
+			</div>
+			</div>
+					
+				
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>
