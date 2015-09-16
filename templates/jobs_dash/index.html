@@ -19,6 +19,7 @@
 			<div class="open-invoice">Open Jobs: <span class="invoice-numbers">$ {% load humanize %}{{ open_money|intcomma }}</span></div>
 			<div class="open-invoice">Total Paid Last 30d: <span class="invoice-numbers">$ {{ total_paid_last_30|intcomma }}</span></div>
 			<div class="open-invoice">Unpaid Invoices: <span class="invoice-numbers">$ {{ total_invoiced_unpaid|intcomma }} </span></div>
+			<div class="open-invoice"><button id="show-invoiced">Show</button></div>
   			</div>
 		</nav>
 		<div class='container main-content'>
@@ -60,5 +61,6 @@
     	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
     	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    	<script src="../media/jobs/js/main.js"></script>
 	</body>
 </html>
