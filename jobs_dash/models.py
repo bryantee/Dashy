@@ -14,6 +14,8 @@ class Job(models.Model):
 	is_open = models.BooleanField(default=True)
 	is_invoiced = models.BooleanField(default=False)
 	invoiced_date = models.DateField(blank=True, null=True)
+	is_paid = models.BooleanField(default=False)
+	paid_date = models.DateField(blank=True, null=True)
 	
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.address)

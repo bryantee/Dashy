@@ -17,14 +17,15 @@
  				<li><a href="/jobs/add_job">Add Job</a></li>
 			</ul>
 			<div class="open-invoice">Open Jobs: <span class="invoice-numbers">$ {% load humanize %}{{ open_money|intcomma }}</span></div>
-			<div class="open-invoice">Invoiced last 10d: <span class="invoice-numbers">$ {{ invoiced|intcomma }}</span></div>
+			<div class="open-invoice">Total Paid Last 30d: <span class="invoice-numbers">$ {{ total_paid_last_30|intcomma }}</span></div>
+			<div class="open-invoice">Unpaid Invoices: <span class="invoice-numbers">$ {{ total_invoiced_unpaid|intcomma }} </span></div>
   			</div>
 		</nav>
 		<div class='container main-content'>
 		<!-- <h1> Open Jobs:</h1> -->
-		<div class="row">
-		{% if invoiced_jobs %}
-			{% for job in invoiced_jobs %}
+		<div class="row unpaid-invoice-row">
+		{% if unpaid_invoices %}
+			{% for job in unpaid_invoices %}
 				<div class="col-lg-3 col-md-4 job invoiced">
 					<h3>{{ job.address }}</h3>
 						<p>Date Due: {{ job.due_date }}</p>
@@ -33,22 +34,23 @@
 				</div>
 			{% endfor %}
 		{% endif %}
+		</div>
+		<div class="row open-jobs-row">
 		{% if open_jobs %}	
-				{% for job in open_jobs %}
-					<div class="col-lg-3 col-md-4 job">
-					<h3> {% if job.is_invoiced == True %} <span class="invoiced"> {{ job.address }}</span> {% else %} {{ job.address }} {% endif %} </h3>
-						<p>Date Due: {{ job.due_date }}</p>
-						<p>Price:{% if job.is_invoiced == True %}
-							<span class="invoiced"> ${{ job.price|intcomma }}</span>
-						{% else %}<span> ${{ job.price|intcomma }}</span>
-							<span> 
-						{% endif %}
-						</p>
-						<p><a class="btn btn-info" href="{{ job.slug }}">Details</a></p>
-					</div>
-				{% endfor %}
-		
-			</div>
+			{% for job in open_jobs %}
+				<div class="col-lg-3 col-md-4 job">
+				<h3> {% if job.is_invoiced == True %} <span class="invoiced"> {{ job.address }}</span> {% else %} {{ job.address }} {% endif %} </h3>
+					<p>Date Due: {{ job.due_date }}</p>
+					<p>Price:{% if job.is_invoiced == True %}
+						<span class="invoiced"> ${{ job.price|intcomma }}</span>
+					{% else %}<span> ${{ job.price|intcomma }}</span>
+						<span> 
+					{% endif %}
+					</p>
+					<p><a class="btn btn-info" href="{{ job.slug }}">Details</a></p>
+				</div>
+			{% endfor %}
+	
 			{% else %}
 			<strong>There are no open jobs.</strong>
 		{% endif %}

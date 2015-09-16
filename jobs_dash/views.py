@@ -16,12 +16,21 @@ def index(request):
 			today = datetime.today().date()
 			dt = today - job.invoiced_date
 			print(dt.total_seconds())
-			if dt.total_seconds() <= 864000:
+			if dt.total_seconds() <= 2592000:
 				return True
 			else:
 				return False
 
-	# get total open invoicables
+	def was_paid_last_30_days(job):
+		if job.paid_date:
+			today = datetime.today().date()
+			dt = today - job.paid_date
+			if dt.total_seconds() <= 2592000:
+				return True
+			else:
+				return False
+
+	# get total open jobs not invoiced
 	total_open_money = 0
 	for j in jobs_open_list:
 		if j.is_invoiced == False:
@@ -32,13 +41,33 @@ def index(request):
 	total_invoiced = 0
 	invoiced_jobs = [j for j in jobs_list if j.is_invoiced]
 	invoiced_last_10 = [j for j in invoiced_jobs if was_invoiced_10_days_ago(j)]
+	
+	
+	# get total for unpaid invoices
+	unpaid_invoices = [j for j in invoiced_jobs if j.is_paid == False]
+	total_invoiced_unpaid = 0
+	for j in unpaid_invoices:
+		total_invoiced_unpaid += j.price
 
+	context_dict['unpaid_invoices'] = unpaid_invoices
+	context_dict['total_invoiced_unpaid'] = total_invoiced_unpaid
+
+	# Jobs invoiced in last 10/30 days
+	## May not be used
 	print invoiced_last_10
 	for j in invoiced_last_10:
 			total_invoiced += j.price
 	context_dict['invoiced'] = total_invoiced
 	context_dict['invoiced_jobs'] = invoiced_last_10
 
+	# Jobs paid in last 30 days
+	jobs_paid_last_30 = [j for j in invoiced_jobs if was_paid_last_30_days(j)]
+	total_paid_last_30 = 0
+	for j in jobs_paid_last_30:
+		total_paid_last_30 += j.price
+	context_dict['total_paid_last_30'] = total_paid_last_30
+
+	# Render the request w/ context dict complete
 	return render(request, 'jobs_dash/index.html', context_dict)
 
 def job_detail(request, job_address_slug):
