@@ -30,6 +30,7 @@
 				<div class="col-lg-3 col-md-4 job invoiced">
 					<h3>{{ job.address }}</h3>
 						<p>Date Due: {{ job.due_date }}</p>
+						<p>Date Invoiced: {{ job.invoiced_date }}
 						<p>Price: ${{ job.price|intcomma }}</p>
 						<p><a class="btn btn-success" href="{{ job.slug }}">Details</a></p>
 				</div>

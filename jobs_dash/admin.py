@@ -1,7 +1,7 @@
 from django.contrib import admin
 from jobs_dash.models import Job, Comment, Issue
-from datetime import date
-today = date.today()
+from datetime import datetime
+today = datetime.today().date()
 
 def make_invoiced(modeladmin, request, queryset):
 	queryset.update(is_open = False)
@@ -12,7 +12,7 @@ make_invoiced.short_description = "Invoice and close selected jobs"
 
 class JobAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug':('address',)}
-	list_display = ('address', 'due_date', 'is_open', 'is_invoiced', 'invoiced_date')
+	list_display = ('address', 'due_date', 'invoiced_date', 'is_open', 'is_invoiced', 'is_paid')
 	list_filter = ["due_date"]
 	search_fields = ['address']
 	actions = [make_invoiced]
