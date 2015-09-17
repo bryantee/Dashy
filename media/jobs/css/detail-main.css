@@ -33,3 +33,12 @@
 .header {
 	font-size: 1.7em;
 }
+
+.window {
+	float: right;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 15px;
+	margin: auto 15px auto 0;
+	color: white;
+}
+}

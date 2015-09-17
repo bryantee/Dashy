@@ -18,28 +18,22 @@
   			</div>
 		</nav>
 
-		 
-		 <div class='container'>
-		 	<div class="row top-row">
-		 	<div class="col-md-6 job-image">
-		 	{% block image %}
-		 	<img class="img-rounded" src="{{ job.pic.url }}" height="300" width="375" border="1" / >
-		 	{% endblock %}
-		 	</div>
-		 	<div class="col-md-6 job-main-info">
-			 <h1>{{ job_address }}</h1> 
-					<p><b>Days left until due: </b> {{ dt }}</p>
-					<p><b>Date due: </b>{{ job_due_date }}</p>
-					<p><b>Price: </b>${{ job_price }}</p>
-					<p><b>Status: </b><i>[{% if job_status %}OPEN{% else %}CLOSED{% endif %}]</i></p>
-					<p><b># of Open Issues: </b>{{ open_issues_count }}
-					<ul>
-						{% for issue in issues_list %}
-						<li>{{ issue.date}} : {{ issue.text }} - <b><i>[{% if issue.is_open %}OPEN{% else %}CLOSED{% endif %}]</i></b></li>
-						{% endfor %}
-					</ul></p>
-			</div> 
-			</div>
+		 <div class="jumbotron" style="background: url({{ job.pic.url }}) center center;
+			  background-size: cover;
+			  height: 100%;
+			  width: 100%;
+			  min-height: 500px;">
+			<div class="window">
+				  <h1 id='address' class='jumbotron-info'>{{ job_address }}</h1>
+				  <h3 id='price' class="jumbotron-info">Price: $ {% load humanize %}{{ job.price|intcomma }}</h3>
+				  <h3 id='due-date' class="jumbotron-info">Due: {{ job.due_date|date:"D d M" }}</h3>
+				  <h3 id='status' class="jumbotron-info"></h3>
+				  <h3 id='flooring-status' class="jumbotron-info"></h3>
+				  <h3 id='flooring-date' class="jumbotron-info"></h3>
+		  	</div>
+		 	
+		 </div>
+
 			<div class="container">
 			<div class="row second-row">
 			<div class="col-md-6 job-log">
