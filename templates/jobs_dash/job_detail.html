@@ -28,8 +28,17 @@
 				  <h3 id='price' class="jumbotron-info">Price: $ {% load humanize %}{{ job.price|intcomma }}</h3>
 				  <h3 id='due-date' class="jumbotron-info">Due: {{ job.due_date|date:"D d M" }}</h3>
 				  <h3 id='status' class="jumbotron-info"></h3>
-				  <h3 id='flooring-status' class="jumbotron-info"></h3>
-				  <h3 id='flooring-date' class="jumbotron-info"></h3>
+				  <h3 id='flooring-status' class="jumbotron-info">Flooring: 
+				  	{% if job.flooring %}
+				  		Yes
+			  		{% else %}
+			  			No
+		  			{% endif %}
+				  	</h3>
+			  	{% if job.flooring %}
+				  	<h3 id='flooring-date' class="jumbotron-info">Install Date: {{ job.flooring_date|date:"D d M" }}</h3>
+			  	{% endif %}
+
 		  	</div>
 		 	
 		 </div>

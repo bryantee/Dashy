@@ -11,6 +11,8 @@ class Job(models.Model):
 	price = models.DecimalField(max_digits=8, decimal_places=2)
 	pic = models.ImageField("House Pic", upload_to="images/", blank=True, null=True)
 	slug = models.SlugField(unique=True)
+	flooring = models.BooleanField(default=False)
+	flooring_date = models.DateField(blank=True, null=True)
 	is_open = models.BooleanField(default=True)
 	is_invoiced = models.BooleanField(default=False)
 	invoiced_date = models.DateField(blank=True, null=True)
