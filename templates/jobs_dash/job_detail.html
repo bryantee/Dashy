@@ -38,7 +38,11 @@
 			  	{% if job.flooring %}
 				  	<h3 id='flooring-date' class="jumbotron-info">Install Date: {{ job.flooring_date|date:"D d M" }}</h3>
 			  	{% endif %}
-
+			  	<div class="agent-info">
+					<span class="agent">{{ job.agent_name }}</span> | 
+					<span class="agent"><a href="mailto: {{ job.agent_email }}?subject={{ job.address }}">{{ job.agent_email }}</a></span> | 
+					<span class="agent">{{ job.agent_phone }}</span>
+		  		</div>
 		  	</div>
 		 	
 		 </div>
