@@ -20,7 +20,7 @@ class Job(models.Model):
 	paid_date = models.DateField(blank=True, null=True)
 	agent_name = models.CharField(max_length=128, blank=True)
 	agent_phone = models.CharField(max_length=12, blank=True)
-	agent_email = models.CharField(max_length=128, blank=True)
+	agent_email = models.EmailField(max_length=128, blank=True)
 	
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.address)
