@@ -36,7 +36,13 @@
 		  			{% endif %}
 				  	</h3>
 			  	{% if job.flooring %}
-				  	<h3 id='flooring-date' class="jumbotron-info">Install Date: {{ job.flooring_date|date:"D d M" }}</h3>
+			  		<h3 id='flooring-date' class="jumbotron-info">Install Date:
+					{% if job.flooring_date %}
+			  			{{ job.flooring_date|date:"D d M" }}
+					{% else %}
+						<a href="mailto: KLehinger@preferredbrandscorp.com?subject=Schedule:{{ job.address }}">Schedule</a>
+		  			</h3>
+		  			{% endif %}
 			  	{% endif %}
 			  	<div class="agent-info">
 					<span class="agent">{{ job.agent_name }}</span> | 
