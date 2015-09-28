@@ -49,6 +49,11 @@
 					<span class="agent"><a href="mailto: {{ job.agent_email }}?subject={{ job.address }}">{{ job.agent_email }}</a></span> | 
 					<span class="agent">{{ job.agent_phone }}</span>
 		  		</div>
+		  		<div class="">
+		  			<span class="">Customer Care</span> | 
+					<span class=""><a href="mailto: customercare@charterhomealliance.com?subject={{ job.address }}">CustomerCare@</a></span> | 
+					<span class="">480-376-8788</span>
+		  		</div>
 		  		 {% if job.purchase_order %}
 				  	<a href="{{ job.purchase_order.url }}" target="_blank" class="po btn btn-primary">PO</a>
 			  	  {% endif %}	
