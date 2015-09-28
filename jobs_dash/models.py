@@ -10,6 +10,7 @@ class Job(models.Model):
 	time_created = models.TimeField(auto_now_add=True)
 	price = models.DecimalField(max_digits=8, decimal_places=2)
 	pic = models.ImageField("House Pic", upload_to="images/", blank=True, null=True)
+	purchase_order = models.FileField("Purchase Order", upload_to="pos/", blank=True, null=True)
 	slug = models.SlugField(unique=True)
 	flooring = models.BooleanField(default=False)
 	flooring_date = models.DateField(blank=True, null=True)

@@ -43,6 +43,9 @@
 					<span class="agent"><a href="mailto: {{ job.agent_email }}?subject={{ job.address }}">{{ job.agent_email }}</a></span> | 
 					<span class="agent">{{ job.agent_phone }}</span>
 		  		</div>
+		  		 {% if job.purchase_order %}
+				  	<a href="{{ job.purchase_order.url }}" target="_blank" class="po btn btn-primary">PO</a>
+			  	  {% endif %}	
 		  	</div>
 		 	
 		 </div>
