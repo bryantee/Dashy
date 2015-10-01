@@ -46,7 +46,14 @@
 	margin-top: 20px;
 }
 
-.po {
-	float: right;
-	
+.attachments {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.attachment {
+	width: 150px;
+	height: 35px;
+	margin: auto;
 }
