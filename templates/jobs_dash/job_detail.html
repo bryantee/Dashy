@@ -56,8 +56,15 @@
 		  		</div>
 		  		<div class="attachments">
 			  		 {% if job.purchase_order %}
-					  	<a href="{{ job.purchase_order.url }}" target="_blank" class="attachment po btn btn-primary">PO</a>
+					  	<a href="{{ job.purchase_order.url }}" target="_blank" class="attachment po btn btn-primary">Charter PO</a>
 				  	  {% endif %}
+				  	  {% if job.repair_po %}
+				  	  	<a href="{{ job.repair_po.url }}" target="_blank" class="attachment po btn btn-primary">Repairs PO</a>
+			  	  	  {% endif %}
+			  	  	 {% if job.paint_po %}
+				  	  	<a href="{{ job.paint_po.url }}" target="_blank" class="attachment po btn btn-primary">Paint PO</a>
+			  	  	  {% endif %}
+
 		  	  	</div>	
 		  	</div>
 		 	
