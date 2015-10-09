@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='job',
             name='invoiced_date',
-            field=models.DateField(default=datetime.datetime(2015, 7, 21, 22, 15, 22, 683483, tzinfo=utc)),
+            field=models.DateField(default=datetime.datetime(2015, 7, 21, 22, 15, 22, 683483, tzinfo=utc), null=True, blank=True),
             preserve_default=False,
         ),
     ]

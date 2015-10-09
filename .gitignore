@@ -1,3 +1,5 @@
 *.pyc
 media/images/**
 media/pos/**
+db.sqlite3
+
