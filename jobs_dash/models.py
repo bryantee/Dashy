@@ -3,7 +3,14 @@ from django.template.defaultfilters import slugify
 from PIL import Image
 from datetime import datetime
 
+class Client(models.Model):
+	name = models.CharField(max_length=30)
+
+	def __unicode__(self):
+		return self.name
+
 class Job(models.Model):
+	client = models.ForeignKey(Client, verbose_name="Client", blank=True, null=True)
 	address = models.CharField(max_length=128, unique=True)
 	due_date = models.DateField()
 	date_created = models.DateField(auto_now_add=True)
@@ -57,3 +64,5 @@ class Issue(models.Model):
 
 	def __unicode__(self):
 		return  str(self.job) + ' - ' + str(self.date)
+
+
