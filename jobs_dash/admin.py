@@ -1,5 +1,5 @@
 from django.contrib import admin
-from jobs_dash.models import Job, Comment, Issue, Client
+from jobs_dash.models import Job, Comment, Issue, Client, City
 from datetime import datetime
 today = datetime.today().date()
 
@@ -17,7 +17,7 @@ class JobAdmin(admin.ModelAdmin):
 	search_fields = ['address']
 	actions = [make_invoiced]
 	fieldsets = [
-		('House', 			{'fields': ['client', 'address', 'due_date', 'price', 'pic']}),
+		('House', 			{'fields': ['client', 'address', 'city', 'due_date', 'price', 'pic']}),
 		('PO\'s', 		{'fields': ['purchase_order', 'repair_po', 'paint_po']}),
 		('Flooring', 	{'fields': ['flooring', 'flooring_date']}),
 		('Agent Info',	{'fields': ['agent_name', 'agent_phone', 'agent_email']}),
@@ -30,4 +30,5 @@ admin.site.register(Job, JobAdmin)
 admin.site.register(Comment)
 admin.site.register(Issue)
 admin.site.register(Client)
+admin.site.register(City)
 
