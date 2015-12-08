@@ -28,6 +28,10 @@
 		{% if unpaid_invoices %}
 			{% for job in unpaid_invoices %}
 				<div class="col-lg-3 col-md-4 job invoiced">
+					<div class="top-bar">
+						<div class="city top-bar-unit">{{ job.city }}</div>
+						<div class="client top-bar-unit">{{ job.client }}</div>
+					</div>
 					<h3>{{ job.address }}</h3>
 						<p>Date Due: {{ job.due_date }}</p>
 						<p>Date Invoiced: {{ job.invoiced_date }}
@@ -41,7 +45,11 @@
 		{% if open_jobs %}	
 			{% for job in open_jobs %}
 				<div class="col-lg-3 col-md-4 job">
-				<h3> {% if job.is_invoiced == True %} <span class="invoiced"> {{ job.address }}</span> {% else %} {{ job.address }} {% endif %} </h3>
+					<div class="top-bar">
+						<div class="city top-bar-unit">{{ job.city }}</div>
+						<div class="client top-bar-unit">{{ job.client }}</div>
+					</div>
+					<h3> {% if job.is_invoiced == True %} <span class="invoiced"> {{ job.address }}</span> {% else %} {{ job.address }} {% endif %} </h3>
 					<p>Date Due: {{ job.due_date }}</p>
 					<p>Price:{% if job.is_invoiced == True %}
 						<span class="invoiced"> ${{ job.price|intcomma }}</span>

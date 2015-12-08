@@ -7,6 +7,19 @@
 	min-height: 250px;
 }
 
+.top-bar {
+	overflow: hidden;
+}
+
+.top-bar-unit {
+	display: inline-block;
+	float: right;
+	margin-left: 15px;
+	border: 1px solid grey;
+	padding: 3px;
+
+}
+
 .open-invoice {
 	float: right;
 	margin-top: 10px;
