@@ -20,6 +20,10 @@
 
 }
 
+.client {
+	color: white;
+}
+
 .open-invoice {
 	float: right;
 	margin-top: 10px;
