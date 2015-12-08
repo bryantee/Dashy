@@ -21,7 +21,7 @@ class JobAdmin(admin.ModelAdmin):
 		('PO\'s', 		{'fields': ['purchase_order', 'repair_po', 'paint_po']}),
 		('Flooring', 	{'fields': ['flooring', 'flooring_date']}),
 		('Agent Info',	{'fields': ['agent_name', 'agent_phone', 'agent_email']}),
-		('Invoice',		{'fields': ['is_open', 'is_invoiced', 'invoiced_date', 'is_paid', 'paid_date']}),
+		('Invoice',		{'fields': ['is_open', 'is_invoiced', 'invoiced_date', 'invoice_number', 'is_paid', 'paid_date']}),
 		(None,			{'fields': ['slug']}),
 	]
 
