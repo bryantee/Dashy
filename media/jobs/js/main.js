@@ -8,7 +8,7 @@ $(document).ready(function() {
 		});
 	});
 
-	// change colors for client background
+	// change colors for client background	
 	$('.client').each(function() {
 		var text = $(this).text();
 		//console.log(text);
@@ -18,4 +18,40 @@ $(document).ready(function() {
 			$(this).css("background-color", "#4CAE4C");
 		} 
 	});
+
+	// check where city, change background color accordingly
+	$('.city').each(function() {
+		var city = $(this).text();
+		//check if in phoenix area
+		if (isInArray(phoenixList, city)) {
+			$(this).css('background-color', '#A81A5B');
+		} else {
+			$(this).css("background-color", "#3F358C");
+		}
+	});
 });
+
+// Set lists for each major city area
+var phoenixList = 
+[
+	"phoenix",
+	"fountain hills",
+	"peoria",
+	"mesa",
+	"scottsdale",
+	"gilbert",
+	"buckeye",
+	"tempe"
+]
+
+var tucsonList = 
+[
+	"tucson",
+	"sahuarita",
+	"marana",
+	"green valley"
+]
+
+function isInArray(cities, city) {
+	return cities.indexOf(city.toLowerCase()) > -1;
+}
