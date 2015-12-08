@@ -29,6 +29,14 @@ $(document).ready(function() {
 			$(this).css("background-color", "#3F358C");
 		}
 	});
+
+	// get aging invoice days and append to 
+	$('.aging').each(function() {
+		var date = $(this).parent().siblings('.invoice-line').children('.date-invoiced').text();
+		date = moment(date);
+		var days = daysAgo(date);
+		$(this).append(' ' + days);
+		});
 });
 
 // Set lists for each major city area
@@ -54,4 +62,9 @@ var tucsonList =
 
 function isInArray(cities, city) {
 	return cities.indexOf(city.toLowerCase()) > -1;
+}
+
+function daysAgo(date) {
+	var now = moment();
+	return now.diff(date, 'days');
 }

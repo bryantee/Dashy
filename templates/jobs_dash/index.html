@@ -29,15 +29,16 @@
 			{% for job in unpaid_invoices %}
 				<div class="col-lg-3 col-md-4 job invoiced">
 					<div class="top-bar">
+						<div class="aging top-bar-unit"></div>
 						<div class="invoice-number top-bar-unit">Inv# {{ job.invoice_number }}</div>
 						<div class="city top-bar-unit">{{ job.city }}</div>
 						<div class="client top-bar-unit">{{ job.client }}</div>
 					</div>
 					<h3>{{ job.address }}</h3>
-						<p>Date Due: {{ job.due_date }}</p>
-						<p>Date Invoiced: {{ job.invoiced_date }}
-						<p>Price: ${{ job.price|intcomma }}</p>
-						<p><a class="btn btn-success" href="{{ job.slug }}">Details</a></p>
+					<p>Date Due: {{ job.due_date }}</p>
+					<p class="invoice-line">Date Invoiced: <span class="date-invoiced">{{ job.invoiced_date }}</span>
+					<p>Price: ${{ job.price|intcomma }}</p>
+					<p><a class="btn btn-success" href="{{ job.slug }}">Details</a></p>
 				</div>
 			{% endfor %}
 		{% endif %}
@@ -72,5 +73,6 @@
     	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
     	<script src="../media/jobs/js/main.js"></script>
+    	<script src="../media/jobs/js/moment.js"></script>
 	</body>
 </html>
