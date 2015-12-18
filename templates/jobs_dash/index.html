@@ -30,7 +30,7 @@
 				<div class="col-lg-3 col-md-4 job invoiced">
 					<div class="top-bar">
 						<div class="aging top-bar-unit">Aging <span class="badge"></span></div>
-						<div class="invoice-number top-bar-unit">Inv# {{ job.invoice_number }}</div>
+						<div class="invoice-number top-bar-unit">#{{ job.invoice_number }}</div>
 						<div class="city top-bar-unit">{{ job.city }}</div>
 						<div class="client top-bar-unit">{{ job.client }}</div>
 					</div>
@@ -60,6 +60,12 @@
 					{% endif %}
 					</p>
 					<p><a class="btn btn-info" href="{{ job.slug }}">Details</a></p>
+					<!-- Message / notfication center -->
+					{% if job.flooring %}
+						{% if job.flooring_date == null %}
+							<div class="alert alert-warning"><span class="glyphicon glyphicon-calendar"></span> Need to schedule flooring</div>
+						{% endif %}
+					{% endif %}
 				</div>
 			{% endfor %}
 	

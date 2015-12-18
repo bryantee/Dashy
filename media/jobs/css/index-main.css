@@ -9,27 +9,37 @@
 
 .top-bar {
 	overflow: hidden;
+	display: flex;
+	justify-content: space-between;
 }
 
 .top-bar-unit {
-	display: inline-block;
-	float: right;
-	margin-left: 13px;
-	border: 1px solid grey;
 	padding: 3px;
 
 }
 
 .client {
 	color: white;
+	order: 1;
+	flex-grow: 2;
 }
 
 .city {
 	color: white;
+	order: 2;
+	flex-grow: 2;
+}
+
+.invoice-number {
+	order: 3;
+	flex-grow: 1;
 }
 
 .aging {
-	border: none;	
+	border: none;
+	order: 4;	
+	flex-grow: 1;
+
 }
 
 .open-invoice {
