@@ -34,8 +34,10 @@ $(document).ready(function() {
 	$('.aging').each(function() {
 		var date = $(this).parent().siblings('.invoice-line').children('.date-invoiced').text();
 		date = moment(date);
+		console.log(date) //sanity check
 		var days = daysAgo(date);
-		$(this).append(' ' + days);
+		console.log(days) //sanity check
+		$(this).children().append(days);
 		});
 });
 

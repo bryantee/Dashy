@@ -28,6 +28,10 @@
 	color: white;
 }
 
+.aging {
+	border: none;	
+}
+
 .open-invoice {
 	float: right;
 	margin-top: 10px;
