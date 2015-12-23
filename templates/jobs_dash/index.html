@@ -64,6 +64,8 @@
 					{% if job.flooring %}
 						{% if job.flooring_date == null %}
 							<div class="alert alert-warning"><span class="glyphicon glyphicon-calendar"></span> Need to schedule flooring</div>
+						{% elif job.flooring_date %}
+							<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> Flooring scheduled {{ job.flooring_date }}</div>		
 						{% endif %}
 					{% endif %}
 				</div>
