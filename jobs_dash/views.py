@@ -127,9 +127,9 @@ def job_detail(request, job_address_slug):
 ######################
 
 	# Testing for initial
-	print form['job'].value()
+	# print form['job'].value()
 	# Testing for img url
-	print(job.pic.url)
+	# print(job.pic.url)
 
 ######################
 ### End Test #########

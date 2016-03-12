@@ -17,8 +17,8 @@
 			</ul>
   			</div>
 		</nav>
-
-		 <div class="jumbotron" style="background: url({{ job.pic.url }}) center center;
+		
+		 <div class="jumbotron" style="background: url({% if job.pic %} {{ job.pic.url }}{% endif %}) center center;
 			  background-size: cover;
 			  height: 100%;
 			  width: 100%;
