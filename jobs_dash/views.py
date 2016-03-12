@@ -91,6 +91,7 @@ def job_detail(request, job_address_slug):
 	comment_list = job.comment_set.all().order_by('date')
 	context_dict['comments'] = comment_list
 
+
 	# Show current issues
 	# Future plans for link to more details on issues and past issues
 	issues_list = job.issue_set.all()

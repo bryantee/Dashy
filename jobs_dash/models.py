@@ -15,6 +15,14 @@ class City(models.Model):
 	def __unicode__(self):
 		return self.city_name
 
+class Contact(models.Model):
+	name = models.CharField(max_length=30)
+	phone = models.CharField(max_length=12, blank=True, null=True)
+	email = models.CharField(max_length=30, blank=True, null=True)
+
+	def __unicode__(self):
+		return self.name
+
 class Job(models.Model):
 	client = models.ForeignKey(Client, verbose_name="Client", blank=True, null=True)
 	address = models.CharField(max_length=128, unique=True, verbose_name="Address (No City)")
@@ -30,9 +38,7 @@ class Job(models.Model):
 	slug = models.SlugField(unique=True)
 	flooring = models.BooleanField(default=False)
 	flooring_date = models.DateField(blank=True, null=True)
-	agent_name = models.CharField(max_length=128, blank=True, null=True)
-	agent_phone = models.CharField(max_length=12, blank=True, null=True)
-	agent_email = models.EmailField(max_length=128, blank=True, null=True)
+	contact = models.ForeignKey(Contact, verbose_name="Contact", blank=True, null=True)
 	is_open = models.BooleanField(default=True)
 	is_invoiced = models.BooleanField(default=False)
 	invoiced_date = models.DateField(blank=True, null=True)

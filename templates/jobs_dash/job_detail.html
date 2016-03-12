@@ -44,11 +44,11 @@
 		  			</h3>
 		  			{% endif %}
 			  	{% endif %}
-			  	{% if job.agent_name %}
+			  	{% if job.contact %}
 			  	<div class="agent-info">
-					<span class="agent">{{ job.agent_name }}</span> | 
-					<span class="agent"><a href="mailto: {{ job.agent_email }}?subject={{ job.address }}">{{ job.agent_email }}</a></span> | 
-					<span class="agent">{{ job.agent_phone }}</span>
+					<span class="agent">{{ job.contact.name }}</span> | 
+					<span class="agent"><a href="mailto: {{ job.contact.email }}?subject={{ job.address }}">{{ job.contact.email }}</a></span> | 
+					<span class="agent">{{ job.contact.phone }}</span>
 		  		</div>
 		  		{% endif %}
 		  		<div class="">
