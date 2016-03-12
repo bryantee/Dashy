@@ -66,6 +66,9 @@
 							<div class="alert alert-warning"><span class="glyphicon glyphicon-calendar"></span> Need to schedule flooring</div>
 						{% endif %}
 					{% endif %}
+					{% if job.open_issues %}
+						<div class="alert alert-danger"><span class="glyphicon glyphicon-alert"></span> There are {{ job.open_issues_count }} issues!</div>
+					{% endif %}
 				</div>
 			{% endfor %}
 	

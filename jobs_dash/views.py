@@ -11,6 +11,19 @@ def index(request):
 	jobs_open_list = [j for j in jobs_list if j.is_open]
 	context_dict = {'open_jobs': jobs_open_list}
 
+	## Expirimental: Get issues for each job
+	for job in jobs_open_list:
+		issues = job.issue_set.all()
+		open_issues = [i for i in issues if i.is_open]
+		open_issues_count = len(open_issues)
+		print("Issues: ", issues)
+		print("Open Issues: ", open_issues)
+		print("Count: ", open_issues_count)
+
+		# start adding attributes to each object
+		job.open_issues = open_issues
+		job.open_issues_count = open_issues_count
+
 	def was_invoiced_10_days_ago(job):
 		if job.invoiced_date:
 			today = datetime.today().date()
