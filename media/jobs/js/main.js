@@ -13,9 +13,9 @@ $(document).ready(function() {
 		var text = $(this).text();
 		//console.log(text);
 		if (text == "Charter") {
-			$(this).css("background-color", "#4F9CD4");
+			$(this).addClass("charter");
 		} else {
-			$(this).css("background-color", "#4CAE4C");
+			$(this).addClass("other-client");
 		} 
 	});
 
@@ -24,9 +24,9 @@ $(document).ready(function() {
 		var city = $(this).text();
 		//check if in phoenix area
 		if (isInArray(phoenixList, city)) {
-			$(this).css('background-color', '#A81A5B');
+			$(this).addClass("phoenix");
 		} else {
-			$(this).css("background-color", "#3F358C");
+			$(this).addClass("tucson");
 		}
 	});
 
@@ -51,7 +51,9 @@ var phoenixList =
 	"scottsdale",
 	"gilbert",
 	"buckeye",
-	"tempe"
+	"tempe",
+	"surprise",
+	"Queen Creek"
 ]
 
 var tucsonList = 

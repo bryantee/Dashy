@@ -30,6 +30,22 @@
 	flex-grow: 2;
 }
 
+.phoenix {
+	background-color: #A81A5B;
+}
+
+.tucson {
+	background-color: #3F358C;
+}
+
+.charter {
+	background-color: #4F9CD4;
+}
+
+.other-client {
+	background-color: #4CAE4C;
+}
+
 .invoice-number {
 	order: 3;
 	flex-grow: 1;
