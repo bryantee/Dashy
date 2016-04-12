@@ -16,9 +16,9 @@ def index(request):
 		issues = job.issue_set.all()
 		open_issues = [i for i in issues if i.is_open]
 		open_issues_count = len(open_issues)
-		print("Issues: ", issues)
-		print("Open Issues: ", open_issues)
-		print("Count: ", open_issues_count)
+		# print("Issues: ", issues)
+		# print("Open Issues: ", open_issues)
+		# print("Count: ", open_issues_count)
 
 		# start adding attributes to each object
 		job.open_issues = open_issues
@@ -28,7 +28,7 @@ def index(request):
 		if job.invoiced_date:
 			today = datetime.today().date()
 			dt = today - job.invoiced_date
-			print(dt.total_seconds())
+			# print(dt.total_seconds())
 			if dt.total_seconds() <= 2592000:
 				return True
 			else:
@@ -67,7 +67,7 @@ def index(request):
 
 	# Jobs invoiced in last 10/30 days
 	## May not be used
-	print invoiced_last_10
+	# print invoiced_last_10
 	for j in invoiced_last_10:
 			total_invoiced += j.price
 	context_dict['invoiced'] = total_invoiced
