@@ -69,7 +69,14 @@
 						{% endif %}
 					{% endif %}
 					{% if job.open_issues %}
-						<div class="alert alert-danger"><span class="glyphicon glyphicon-alert"></span> There are {{ job.open_issues_count }} issues!</div>
+						<div class="alert alert-danger open-issue-box">
+							<span class="glyphicon glyphicon-alert"></span> There are {{ job.open_issues_count }} issues!
+							<ul class="open-issues">
+								{% for issue in job.open_issues %}
+									<li class="issue">{{ issue.text }}</li>
+								{% endfor %}
+							</ul>
+						</div>
 					{% endif %}
 				</div>
 			{% endfor %}

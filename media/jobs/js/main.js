@@ -8,6 +8,13 @@ $(document).ready(function() {
 		});
 	});
 
+	// event listener for showing open issues
+	$('.open-issue-box').on('click', function() {
+		console.log('Open issues clicked');
+		$(this).children('.open-issues').toggle("slow");
+	});
+
+
 	// change colors for client background	
 	$('.client').each(function() {
 		var text = $(this).text();

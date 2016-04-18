@@ -74,3 +74,8 @@
 .unpaid-invoice-row {
 	display: none;
 }
+
+.open-issues {
+	text-align: left;
+	display: none;
+}
