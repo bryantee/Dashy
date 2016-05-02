@@ -40,7 +40,7 @@ $(document).ready(function() {
 	// get aging invoice days and append to 
 	$('.aging').each(function() {
 		var date = $(this).parent().siblings('.invoice-line').children('.date-invoiced').text();
-		date = moment(date);
+		date = moment(new Date(date));
 		console.log(date) //sanity check
 		var days = daysAgo(date);
 		console.log(days) //sanity check
@@ -60,7 +60,9 @@ var phoenixList =
 	"buckeye",
 	"tempe",
 	"surprise",
-	"Queen Creek"
+	"queen creek",
+	"goodyear",
+	"glendale"
 ]
 
 var tucsonList = 
