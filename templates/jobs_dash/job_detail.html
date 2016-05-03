@@ -80,7 +80,7 @@
 					{% for comment in comments %}
 					<div class="comment">
 						<div class="time-stamp">{{ comment.date }}</div>
-						<div class="comment-text">{{ comment.text }}</div>
+						<div class="comment-text">{{ comment.text | linebreaks}}</div>
 					</div>
 					{% endfor %}
 				</div>
