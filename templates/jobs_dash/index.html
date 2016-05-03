@@ -70,7 +70,7 @@
 					{% endif %}
 					{% if job.open_issues %}
 						<div class="alert alert-danger open-issue-box">
-							<span class="glyphicon glyphicon-alert"></span> There are {{ job.open_issues_count }} issues!
+							<span class="glyphicon glyphicon-alert"></span> There{{ job.open_issues_count | pluralize:" is, are" }} {{ job.open_issues_count }} issue{{ job.open_issues_count | pluralize }}!
 							<ul class="open-issues">
 								{% for issue in job.open_issues %}
 									<li class="issue">{{ issue.text }}</li>
