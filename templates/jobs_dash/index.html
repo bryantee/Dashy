@@ -52,10 +52,13 @@
 						<div class="client top-bar-unit">{{ job.client }}</div>
 					</div>
 					<h3> {% if job.is_invoiced == True %} <span class="invoiced"> {{ job.address }}</span> {% else %} {{ job.address }} {% endif %} </h3>
-					<p>Date Due: {{ job.due_date }}</p>
-					<p>Price:{% if job.is_invoiced == True %}
+					<p>Due in <strong>{{ job.due_date | timeuntil }}</strong>
+						<br><small>({{ job.due_date }})</small>
+					</p>
+
+					<p>{% if job.is_invoiced == True %}
 						<span class="invoiced"> ${{ job.price|intcomma }}</span>
-					{% else %}<span> ${{ job.price|intcomma }}</span>
+					{% else %}<span> <strong>${{ job.price|intcomma }}</strong></span>
 						<span> 
 					{% endif %}
 					</p>
