@@ -45,7 +45,18 @@ $(document).ready(function() {
 		var days = daysAgo(date);
 		console.log(days) //sanity check
 		$(this).children().append(days);
-		});
+	});
+
+	// append 'due now' to card if due soon or past due
+	$('.days-left').each(function() {
+		var timeText = $(this).text();
+		console.log(timeText);
+		if (timeText.toLowerCase().indexOf("minutes") >= 0 ) {
+			$(this).text('NOW').addClass('due');
+		}
+	});
+
+
 });
 
 // Set lists for each major city area

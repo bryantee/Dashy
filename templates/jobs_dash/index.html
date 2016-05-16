@@ -46,13 +46,13 @@
 		<div class="row open-jobs-row">
 		{% if open_jobs %}	
 			{% for job in open_jobs %}
-				<div class="col-lg-3 col-md-4 job">
+				<div class="clearfix visible-lg-block visible-md-block visible-sm-block col-lg-3 col-md-4 job">
 					<div class="top-bar">
 						<div class="city top-bar-unit">{{ job.city }}</div>
 						<div class="client top-bar-unit">{{ job.client }}</div>
 					</div>
 					<h3> {% if job.is_invoiced == True %} <span class="invoiced"> {{ job.address }}</span> {% else %} {{ job.address }} {% endif %} </h3>
-					<p>Due in <strong>{{ job.due_date | timeuntil }}</strong>
+					<p>Due in <strong class="days-left">{{ job.due_date | timeuntil }}</strong>
 						<br><small>({{ job.due_date }})</small>
 					</p>
 

@@ -79,3 +79,7 @@
 	text-align: left;
 	display: none;
 }
+
+.due {
+	color: red;
+}
