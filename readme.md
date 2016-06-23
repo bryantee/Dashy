@@ -8,6 +8,8 @@ It's currently running on a Raspberry Pi on their local intranet.
 
 ***
 
-![Screenshot Detail](http://i.imgur.com/jPhhyz0.png "Details Page")
-
 ![Screenshot Detail-2](http://i.imgur.com/ZhfVX4Y.png "Details Page 2")
+
+**
+
+![Screenshot Detail](http://i.imgur.com/jPhhyz0.png "Details Page")
