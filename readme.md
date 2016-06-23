@@ -5,3 +5,9 @@ The Jobs Dashboard is a prototype web application used internally by New Legacy 
 It's currently running on a Raspberry Pi on their local intranet.
 
 ![Screenshot](http://i.imgur.com/P0XKwAZ.png "Main Dashboard")
+
+***
+
+![Screenshot Detail](http://i.imgur.com/jPhhyz0.png "Details Page")
+
+![Screenshot Detail-2](http://i.imgur.com/ZhfVX4Y.png "Details Page 2")
