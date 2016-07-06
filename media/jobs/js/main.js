@@ -15,7 +15,7 @@ $(document).ready(function() {
 	});
 
 
-	// change colors for client background	
+	// change colors for client background
 	$('.client').each(function() {
 		var text = $(this).text();
 		//console.log(text);
@@ -23,7 +23,7 @@ $(document).ready(function() {
 			$(this).addClass("charter");
 		} else {
 			$(this).addClass("other-client");
-		} 
+		}
 	});
 
 	// check where city, change background color accordingly
@@ -37,7 +37,7 @@ $(document).ready(function() {
 		}
 	});
 
-	// get aging invoice days and append to 
+	// get aging invoice days and append to
 	$('.aging').each(function() {
 		var date = $(this).parent().siblings('.invoice-line').children('.date-invoiced').text();
 		date = moment(new Date(date));
@@ -60,7 +60,7 @@ $(document).ready(function() {
 });
 
 // Set lists for each major city area
-var phoenixList = 
+var phoenixList =
 [
 	"phoenix",
 	"fountain hills",
@@ -73,10 +73,13 @@ var phoenixList =
 	"surprise",
 	"queen creek",
 	"goodyear",
-	"glendale"
+	"glendale",
+	"casa grande",
+	"tolleson",
+	"youngtown"
 ]
 
-var tucsonList = 
+var tucsonList =
 [
 	"tucson",
 	"sahuarita",
