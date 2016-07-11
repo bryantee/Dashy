@@ -76,7 +76,19 @@ var phoenixList =
 	"glendale",
 	"casa grande",
 	"tolleson",
-	"youngtown"
+	"youngtown",
+	"el mirage",
+	"avondale",
+	"anthem",
+	"carefree",
+	"san tan valley",
+	"apache junction",
+	"gold canyon",
+	"litchfield park",
+	"sun city",
+	"maricopa",
+	"chandler"
+	"paradise valley",
 ]
 
 var tucsonList =
