@@ -87,7 +87,7 @@ var phoenixList =
 	"litchfield park",
 	"sun city",
 	"maricopa",
-	"chandler"
+	"chandler",
 	"paradise valley",
 ]
 
