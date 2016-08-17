@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<title>Open Jobs</title>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+    	<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    	<link href="../media/jobs/css/index-main.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+ 			<div class="container">
+ 			<ul class="nav navbar-nav">
+ 				<li><a href="/admin">Admin</a></li>
+ 				<li><a href="/jobs/add_job">Add Job</a></li>
+			</ul>
+			<div class="open-invoice">Open Jobs: <span class="invoice-numbers">$ {% load humanize %}{{ open_money|intcomma }}</span></div>
+			<div class="open-invoice">Total Paid Last 30d: <span class="invoice-numbers">$ {{ total_paid_last_30|intcomma }}</span></div>
+			<div class="open-invoice">Unpaid Invoices: <span class="invoice-numbers">$ {{ total_invoiced_unpaid|intcomma }} </span></div>
+			<div class="open-invoice"><button id="show-invoiced">Show</button></div>
+  			</div>
+		</nav>
+		<div class='container main-content'>
+		<!-- <h1> Open Jobs:</h1> -->
+		<div class="row unpaid-invoice-row">
+		{% if unpaid_invoices %}
+			{% for job in unpaid_invoices %}
+				<div class="col-lg-3 col-md-4 job invoiced">
+					<div class="top-bar">
+						<div class="aging top-bar-unit">Aging <span class="badge"></span></div>
+						<div class="invoice-number top-bar-unit">#{{ job.invoice_number }}</div>
+						<div class="city top-bar-unit">{{ job.city }}</div>
+						<div class="client top-bar-unit">{{ job.client }}</div>
+					</div>
+					<h3>{{ job.address }}</h3>
+					<p>Date Due: {{ job.due_date }}</p>
+					<p class="invoice-line">Date Invoiced: <span class="date-invoiced">{{ job.invoiced_date }}</span>
+					<p>Price: ${{ job.price|intcomma }}</p>
+					<p><a class="btn btn-success" href="{{ job.slug }}">Details</a></p>
+				</div>
+			{% endfor %}
+		{% endif %}
+		</div>
+		<div class="row open-jobs-row">
+		{% if open_jobs %}
+			{% for job in open_jobs %}
+				<div class="clearfix visible-lg-block visible-md-block visible-sm-block col-lg-3 col-md-4 job">
+					<div class="top-bar">
+						<div class="city top-bar-unit">{{ job.city }}</div>
+						<div class="client top-bar-unit">{{ job.client }}</div>
+					</div>
+					<h3> {% if job.is_invoiced == True %} <span class="invoiced"> {{ job.address }}</span> {% else %} {{ job.address }} {% endif %} </h3>
+					<p>Due in <strong class="days-left">{{ job.due_date | timeuntil }}</strong>
+						<br><small>({{ job.due_date }})</small>
+					</p>
+
+					<p>{% if job.is_invoiced == True %}
+						<span class="invoiced"> ${{ job.price|intcomma }}</span>
+					{% else %}<span> <strong>${{ job.price|intcomma }}</strong></span>
+						<span>
+					{% endif %}
+					</p>
+					<p><a class="btn btn-info" href="{{ job.slug }}">Details</a></p>
+					<!-- Message / notfication center -->
+					{% if job.flooring %}
+						{% if job.flooring_date == null %}
+							<div class="alert alert-warning"><span class="glyphicon glyphicon-calendar"></span> Need to schedule flooring</div>
+						{% elif job.flooring_date %}
+							<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> Flooring scheduled {{ job.flooring_date }}</div>
+						{% endif %}
+					{% endif %}
+					{% if job.open_issues %}
+						<div class="alert alert-danger open-issue-box">
+							<span class="glyphicon glyphicon-alert"></span> There{{ job.open_issues_count | pluralize:" is, are" }} {{ job.open_issues_count }} issue{{ job.open_issues_count | pluralize }}!
+							<ul class="open-issues">
+								{% for issue in job.open_issues %}
+									<li class="issue">{{ issue.text }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+
+			{% else %}
+			<strong>There are no open jobs.</strong>
+		{% endif %}
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+
+    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    	<script src="../media/jobs/js/main.js"></script>
+    	<script src="../media/jobs/js/moment.js"></script>
+	</body>
+</html>
