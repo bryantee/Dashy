@@ -54,8 +54,8 @@ def index(request):
 	total_invoiced = 0
 	invoiced_jobs = [j for j in jobs_list if j.is_invoiced]
 	invoiced_last_10 = [j for j in invoiced_jobs if was_invoiced_10_days_ago(j)]
-	
-	
+
+
 	# get total for unpaid invoices
 	unpaid_invoices = [j for j in invoiced_jobs if j.is_paid == False]
 	total_invoiced_unpaid = 0
@@ -116,7 +116,7 @@ def job_detail(request, job_address_slug):
 	context_dict['open_issues_count'] = open_issues_count
 
 
-	# Calculates days left until project due	
+	# Calculates days left until project due
 	today = datetime.today().date()
 	dt = job.due_date - today
 	context_dict['dt'] = dt
@@ -127,7 +127,7 @@ def job_detail(request, job_address_slug):
 			form.save(commit=True)
 			return HttpResponseRedirect('/jobs/%s/' % job_address_slug)
 		else:
-			print form.errors
+			print(form.errors)
 	else:
 		form = CommentForm(initial={'job': job.id})
 
@@ -158,7 +158,7 @@ def add_job(request):
 			form.save(commit=True)
 			return HttpResponseRedirect('/jobs/')
 		else:
-			print form.errors
+			print(form.errors)
 	else:
 		form = JobForm()
 
