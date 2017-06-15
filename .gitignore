@@ -2,4 +2,5 @@
 media/images/**
 media/pos/**
 db.sqlite3
-
+.DS_Store
+jobs_dash/migrations
